@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HistoricService} from "../services/historic.service";
-import * as $ from 'jquery';
+declare var $: any;
 
 @Component({
     selector: 'app-generator',
@@ -42,7 +42,7 @@ export class GeneratorComponent implements OnInit {
      * Not proud of this
      */
     public closeCollapsible() {
-        (<any>$('#collapsible')).collapse("hide");
+        $('#collapsible').collapse("hide");
     }
 
     ngOnInit() {
