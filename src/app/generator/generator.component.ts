@@ -25,10 +25,6 @@ export class GeneratorComponent implements OnInit {
         this.historicService.saveValue(this.diceValue);
     }
 
-    public isOtherSelected(): boolean {
-        return this.defaultDices.some(value => value == this.selectedDice);
-    }
-
     public diceChoosed(value: number): void {
         this.otherSelected = false;
         this.selectedDice = value;
@@ -36,7 +32,6 @@ export class GeneratorComponent implements OnInit {
 
     public selectOther(): void {
         this.otherSelected = true;
-        this.selectedDice = 40;
     }
 
     ngOnInit() {

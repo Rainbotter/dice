@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {GeneratorComponent} from './generator/generator.component';
 import { HistoricComponent } from './historic/historic.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -15,8 +16,9 @@ import { HistoricComponent } from './historic/historic.component';
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         AppRoutingModule,
-        NgbModule,
+        NgbModule
     ],
     providers: [],
     bootstrap: [AppComponent]

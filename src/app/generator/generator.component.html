@@ -15,9 +15,10 @@
     <div class="col-md-6" *ngIf="otherSelected">
         <div class=" input-group-lg">
             <input type="text" class="form-control"
-                   placeholder="Dice value"
-                   aria-label="Dice value"
-                   aria-describedby="basic-addon1">
+                   placeholder="Dice value (1 if empty)"
+                   aria-label="Dice value (1 if empty)"
+                   aria-describedby="basic-addon1"
+                   [(ngModel)]="selectedDice">
         </div>
     </div>
 
