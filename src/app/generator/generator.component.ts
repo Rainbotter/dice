@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HistoricService} from "../services/historic.service";
 
 @Component({
@@ -14,6 +14,8 @@ export class GeneratorComponent implements OnInit {
     public otherSelected: boolean;
     public defaultDices = [2, 4, 6, 8, 10, 12, 20, 100];
 
+    @ViewChild('collapsible', {static: false}) collapsible: ElementRef;
+
     constructor(private historicService: HistoricService) {
         this.otherSelected = false;
         this.minValue = 1;
@@ -28,10 +30,18 @@ export class GeneratorComponent implements OnInit {
     public diceChoosed(value: number): void {
         this.otherSelected = false;
         this.selectedDice = value;
+        this.closeCollapsible();
     }
 
     public selectOther(): void {
         this.otherSelected = true;
+    }
+
+    /**
+     * Not proud of this
+     */
+    public closeCollapsible() {
+        $('#collapsible').collapse("hide")
     }
 
     ngOnInit() {

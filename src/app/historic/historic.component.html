@@ -1,12 +1,21 @@
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">Historic</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let result of historicOfResult">
-        {{result}}
-    </tr>
-    </tbody>
-</table>
+<div class="row justify-content-center align-self-center">
+    <div class="col big">
+        <button (click)="cleanHistoric()" class="btn btn-outline-primary btn-lg">Clean historic <i class="fas fa-trash"></i></button>
+
+    </div>
+    <div class="col big">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Historic ({{getHistoric().length}})</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let result of getHistoric().slice().reverse()">
+                {{result}}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

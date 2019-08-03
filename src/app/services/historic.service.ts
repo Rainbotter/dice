@@ -23,8 +23,10 @@ export class HistoricService {
 
     public saveValue(value: number): void {
         this.historic.push(value);
+        if(this.historic.length > 50){
+            this.historic.shift();
+        }
         localStorage.setItem('historic', this.historic.toString());
-        console.log(localStorage.getItem('historic'));
     }
 
     public cleanHistoric(): void {
