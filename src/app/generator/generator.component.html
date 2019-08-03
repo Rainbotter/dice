@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <button *ngFor="let value of defaultDices" [class.active]="selectedDice==value"
+                    (click)="diceChoosed(value)"
+                    type="button"
+                    class="btn btn-secondary">
+                {{value}}
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="selectOther()" [class.active]="otherSelected">
+                Other
+            </button>
+        </div>
+    </div>
+    <div class="col-md-6" *ngIf="otherSelected">
+        <div class=" input-group-lg">
+            <input type="text" class="form-control"
+                   placeholder="Dice value"
+                   aria-label="Dice value"
+                   aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+</div>
+
+<div class="row justify-content-center align-self-center">
+    <div class="col big">
+        <button class="btn btn-outline-primary" (click)="generateRandomDice()">
+            Roll the dice
+            <i class="fas fa-dice"></i>
+        </button>
+    </div>
+    <div class="col big">
+        {{diceValue}}
+    </div>
+</div>
