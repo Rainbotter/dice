@@ -17,7 +17,7 @@ export class HistoricComponent implements OnInit {
     ngOnInit() {
     }
 
-    public getHistoric(): number[] {
+    public getHistoric(): string[] {
         return this.historicService.getHistoric();
     }
 
