@@ -5,24 +5,22 @@ import {Injectable} from '@angular/core';
 })
 export class HistoricService {
 
-    private historic: number[];
+    private historic: string[];
 
     constructor() {
         if (localStorage.getItem('historic')) {
-            this.historic = localStorage.getItem('historic').split(',').map(function (item) {
-                return parseInt(item, 10);
-            });
+            this.historic = localStorage.getItem('historic').split(',');
         } else {
             this.historic = [];
         }
     }
 
-    public getHistoric(): number[] {
+    public getHistoric(): string[] {
         return this.historic;
     }
 
-    public saveValue(value: number): void {
-        this.historic.push(value);
+    public saveValue(value: number, dice: number): void {
+        this.historic.push(value + " / " + dice);
         if(this.historic.length > 50){
             this.historic.shift();
         }

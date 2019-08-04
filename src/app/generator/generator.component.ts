@@ -25,7 +25,7 @@ export class GeneratorComponent implements OnInit {
 
     public generateRandomDice(): void {
         this.diceValue = Math.floor(this.minValue + Math.random() * Math.floor(this.selectedDice));
-        this.historicService.saveValue(this.diceValue);
+        this.historicService.saveValue(this.diceValue, this.selectedDice);
     }
 
     public diceChoosed(value: number): void {
