@@ -10,13 +10,34 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col">Min value</th>
                         <th scope="col">Results ({{getHistoric().length}})</th>
                         <th scope="col">Max value</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let result of getHistoric().slice().reverse()">
+                    <tr *ngFor="let result of getHistoric().slice().reverse(); index as i">
+                        <td>
+                            <div class="dropright">
+                                <button class="btn btn-secondary btn-block"
+                                        type="button"
+                                        id="dropdownMenuButton"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <div class="dropdown-menu pre-scrollable" aria-labelledby="dropdownMenuButton">
+                                    <div class="dropdown-header">Roll results</div>
+                                    <div class="dropdown-divider"></div>
+                                    <li *ngFor="let roll of result.rolls"
+                                         class="dropdown-header">
+                                        {{roll}}
+                                    </li>
+                            </div>
+                            </div>
+                        </td>
                         <td>{{result.minValue}}</td>
                         <td>{{result.result}}</td>
                         <td>{{result.maxValue}}</td>

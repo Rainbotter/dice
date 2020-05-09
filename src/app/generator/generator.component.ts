@@ -28,19 +28,21 @@ export class GeneratorComponent implements OnInit {
         this.minValue = 1;
         this.selectedDice = this.defaultDices[0];
         this.selectedNumberOfDice = this.defaultNumberOfDices[0];
-        this.diceValue = {maxValue: 0, result: 0, minValue: 0};
+        this.diceValue = {maxValue: 0, result: 0, minValue: 0, rolls: []};
     }
 
     public generateRandomDice(): void {
         const minValue = Math.floor(this.minValue * this.selectedNumberOfDice);
         const maxValue = Math.floor(this.selectedDice * this.selectedNumberOfDice);
+        const rolls = [];
         let result = 0;
         for (let i = 0; i < this.selectedNumberOfDice; i++) {
             const r = Math.floor(this.minValue + Math.random() * Math.floor(this.selectedDice));
+            rolls.push(r);
             result += r;
         }
 
-        const diceRoll: DiceResultModel = {minValue, maxValue, result};
+        const diceRoll: DiceResultModel = {minValue, maxValue, result, rolls};
         this.diceValue = diceRoll;
         this.historicService.saveValue(diceRoll);
     }
