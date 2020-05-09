@@ -28,6 +28,7 @@ export class GeneratorComponent implements OnInit {
         this.minValue = 1;
         this.selectedDice = this.defaultDices[0];
         this.selectedNumberOfDice = this.defaultNumberOfDices[0];
+        this.diceValue = {maxValue: 0, result: 0, minValue: 0};
     }
 
     public generateRandomDice(): void {

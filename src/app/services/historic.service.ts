@@ -17,6 +17,7 @@ export class HistoricService {
     }
 
     public getHistoric(): DiceResultModel[] {
+        console.log(this.historic);
         return this.historic;
     }
 
