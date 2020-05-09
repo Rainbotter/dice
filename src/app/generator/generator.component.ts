@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HistoricService} from '../services/historic.service';
-import {DiceResultModel} from '../models/dice-result.model';
+import {RollResultModel} from '../models/roll-result.model';
 
 declare var $: any;
 
@@ -12,7 +12,7 @@ declare var $: any;
 export class GeneratorComponent implements OnInit {
 
     private minValue: number;
-    public diceValue: DiceResultModel;
+    public diceValue: RollResultModel;
     public selectedDice: number;
     public selectedNumberOfDice: number;
     public otherSelected: boolean;
@@ -28,7 +28,7 @@ export class GeneratorComponent implements OnInit {
         this.minValue = 1;
         this.selectedDice = this.defaultDices[0];
         this.selectedNumberOfDice = this.defaultNumberOfDices[0];
-        this.diceValue = {maxValue: 0, result: 0, minValue: 0, rolls: []};
+        this.diceValue = {maxValue: 0, result: 0, minValue: 0, rolls: [], diceType: 0};
     }
 
     public generateRandomDice(): void {
@@ -42,7 +42,7 @@ export class GeneratorComponent implements OnInit {
             result += r;
         }
 
-        const diceRoll: DiceResultModel = {minValue, maxValue, result, rolls};
+        const diceRoll: RollResultModel = {minValue, maxValue, result, rolls, diceType: this.selectedDice};
         this.diceValue = diceRoll;
         this.historicService.saveValue(diceRoll);
     }
@@ -81,7 +81,7 @@ export class GeneratorComponent implements OnInit {
         $('#collapsible2').collapse('hide');
     }
 
-    ngOnInit() {
+    public ngOnInit(): void {
     }
 
 }

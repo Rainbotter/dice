@@ -31,11 +31,11 @@
                                 <div class="dropdown-menu pre-scrollable" aria-labelledby="dropdownMenuButton">
                                     <div class="dropdown-header">Roll results</div>
                                     <div class="dropdown-divider"></div>
-                                    <li *ngFor="let roll of result.rolls"
-                                         class="dropdown-header">
-                                        {{roll}}
-                                    </li>
-                            </div>
+                                    <div *ngFor="let roll of result.rolls"
+                                        class="dropdown-header">
+                                        {{roll}} / {{result.diceType}}
+                                    </div>
+                                </div>
                             </div>
                         </td>
                         <td>{{result.minValue}}</td>
@@ -62,6 +62,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th></th>
                         <th scope="col">Min value</th>
                         <th scope="col">Results ({{getHistoric().length}})</th>
                         <th scope="col">Max value</th>
@@ -69,6 +70,13 @@
                     </thead>
                     <tbody>
                     <tr *ngFor="let result of getHistoric().slice().reverse()">
+                        <td>
+                            <button class="btn btn-secondary btn-block"
+                                    type="button"
+                                    (click)="open(result)">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </td>
                         <td>{{result.minValue}}</td>
                         <td>{{result.result}}</td>
                         <td>{{result.maxValue}}</td>

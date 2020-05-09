@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {DiceResultModel} from '../models/dice-result.model';
+import {RollResultModel} from '../models/roll-result.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HistoricService {
 
-    private historic: DiceResultModel[];
+    private historic: RollResultModel[];
 
     constructor() {
         if (localStorage.getItem('historic')) {
@@ -16,12 +16,11 @@ export class HistoricService {
         }
     }
 
-    public getHistoric(): DiceResultModel[] {
-        console.log(this.historic);
+    public getHistoric(): RollResultModel[] {
         return this.historic;
     }
 
-    public saveValue(value: DiceResultModel): void {
+    public saveValue(value: RollResultModel): void {
         this.historic.push(value);
         if (this.historic.length > 50) {
             this.historic.shift();
