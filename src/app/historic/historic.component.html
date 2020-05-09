@@ -1,21 +1,60 @@
-<div class="row justify-content-center align-self-center">
-    <div class="col big">
-        <button (click)="cleanHistoric()" class="btn btn-outline-primary btn-lg">Clean historic <i class="fas fa-trash"></i></button>
-
+<div class="justify-content-center align-self-center">
+    <div class="d-none d-lg-block">
+        <div class="row">
+            <div class="col big">
+                <button (click)="cleanHistoric()" class="btn btn-outline-primary btn-lg">
+                    Clean historic <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="col big overflow-auto vh-50">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Min value</th>
+                        <th scope="col">Results ({{getHistoric().length}})</th>
+                        <th scope="col">Max value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let result of getHistoric().slice().reverse()">
+                        <td>{{result.minValue}}</td>
+                        <td>{{result.result}}</td>
+                        <td>{{result.maxValue}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="col big">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Historic ({{getHistoric().length}})</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let result of getHistoric().slice().reverse()">
-                {{result}}
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
+    <div class="d-block d-lg-none">
+        <div class="row">
+            <div class="col-sm-12 big">
+                <button (click)="cleanHistoric()" class="btn btn-outline-primary btn-lg btn-block">
+                    Clean historic <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="big overflow-auto vw-100">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Min value</th>
+                        <th scope="col">Results ({{getHistoric().length}})</th>
+                        <th scope="col">Max value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let result of getHistoric().slice().reverse()">
+                        <td>{{result.minValue}}</td>
+                        <td>{{result.result}}</td>
+                        <td>{{result.maxValue}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

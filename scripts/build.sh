@@ -2,4 +2,4 @@
 
 npm install -g @angular/cli
 npm install
-ng build --prod
+npm run build:prod

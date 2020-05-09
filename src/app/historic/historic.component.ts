@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HistoricService} from "../services/historic.service";
+import {HistoricService} from '../services/historic.service';
+import {DiceResultModel} from '../models/dice-result.model';
 
 @Component({
     selector: 'app-historic',
@@ -8,7 +9,7 @@ import {HistoricService} from "../services/historic.service";
 })
 export class HistoricComponent implements OnInit {
 
-    public historicOfResult: number[];
+    public historicOfResult: DiceResultModel[];
 
     constructor(private historicService: HistoricService) {
         this.historicOfResult = [];
@@ -17,7 +18,7 @@ export class HistoricComponent implements OnInit {
     ngOnInit() {
     }
 
-    public getHistoric(): string[] {
+    public getHistoric(): DiceResultModel[] {
         return this.historicService.getHistoric();
     }
 

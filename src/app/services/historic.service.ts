@@ -1,30 +1,32 @@
 import {Injectable} from '@angular/core';
+import {DiceResultModel} from '../models/dice-result.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HistoricService {
 
-    private historic: string[];
+    private historic: DiceResultModel[];
 
     constructor() {
         if (localStorage.getItem('historic')) {
-            this.historic = localStorage.getItem('historic').split(',');
+            this.historic = JSON.parse(localStorage.getItem('historic'));
         } else {
             this.historic = [];
         }
     }
 
-    public getHistoric(): string[] {
+    public getHistoric(): DiceResultModel[] {
         return this.historic;
     }
 
-    public saveValue(value: number, dice: number): void {
-        this.historic.push(value + " / " + dice);
-        if(this.historic.length > 50){
+    public saveValue(value: DiceResultModel): void {
+        this.historic.push(value);
+        if (this.historic.length > 50) {
             this.historic.shift();
         }
-        localStorage.setItem('historic', this.historic.toString());
+
+        localStorage.setItem('historic', JSON.stringify(this.historic));
     }
 
     public cleanHistoric(): void {
