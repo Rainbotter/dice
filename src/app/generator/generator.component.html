@@ -9,11 +9,13 @@
             <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
                 <button *ngFor="let value of defaultDices" [class.active]="selectedDice==value && !otherSelected"
                         (click)="diceChoosed(value)"
+                        id="dice-{{value}}-button"
                         type="button"
                         class="btn btn-warning">
                     {{value}}
                 </button>
-                <button type="button" class="btn btn-warning" (click)="selectOther()" [class.active]="otherSelected">
+                <button type="button" class="btn btn-warning" id="dice-type-other-button" (click)="selectOther()"
+                        [class.active]="otherSelected">
                     Other
                 </button>
             </div>
@@ -21,6 +23,7 @@
         <div class="col-md-2">
             <div class=" input-group-lg">
                 <input type="text" class="form-control"
+                       id="dice-value-input"
                        placeholder="custom value (1 if empty)"
                        aria-label="custom value (1 if empty)"
                        aria-describedby="basic-addon1"
@@ -42,10 +45,13 @@
                         [class.active]="selectedNumberOfDice==value && !otherNumberOfDiceSelected"
                         (click)="numberOfDiceChoosed(value)"
                         type="button"
+                        id="dice-number-{{value}}-button"
                         class="btn btn-info">
                     {{value}}
                 </button>
-                <button type="button" class="btn btn-info" (click)="selectOtherNumberOfDice()"
+                <button type="button" class="btn btn-info"
+                        id="dice-number-other-button"
+                        (click)="selectOtherNumberOfDice()"
                         [class.active]="otherNumberOfDiceSelected">
                     Other
                 </button>
@@ -57,6 +63,7 @@
                        placeholder="custom value (1 if empty)"
                        aria-label="custom value (1 if empty)"
                        aria-describedby="basic-addon1"
+                       id="dice-number-input"
                        [disabled]="!otherNumberOfDiceSelected"
                        [(ngModel)]="selectedNumberOfDice">
             </div>
@@ -65,14 +72,14 @@
     <br/>
     <div class="row">
         <div class="col-md-6 big">
-            <button class="btn btn-lg btn-primary" (click)="generateRandomDice()">
+            <button class="btn btn-lg btn-primary" id="dice-roll-button" (click)="generateRandomDice()">
                 Roll the dice
                 <i class="fas fa-dice"></i>
             </button>
         </div>
         <div class="col-md-2 big">
         </div>
-        <div class="col-md-2 big">
+        <div class="col-md-2 big" id="dice-result-text">
             {{diceValue.result}}
         </div>
         <div class="col-md-2 big">

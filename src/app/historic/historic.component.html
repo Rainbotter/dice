@@ -2,7 +2,7 @@
     <div class="d-none d-lg-block">
         <div class="row">
             <div class="col big">
-                <button (click)="cleanHistoric()" class="btn btn-danger btn-lg">
+                <button (click)="cleanHistoric()" id="clean-historic-button" class="btn btn-danger btn-lg">
                     Clean historic <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Min value</th>
-                        <th scope="col">Results ({{getHistoric().length}})</th>
+                        <th scope="col" id="historic-number-result-text">Results ({{getHistoric().length}})</th>
                         <th scope="col">Max value</th>
                     </tr>
                     </thead>
